@@ -7,6 +7,9 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.Disposable;
 import com.relic.highflyer.GameEngine;
 
+/**
+ * This class manages the transition from one level to another.
+ */
 public class ScreenManager implements Disposable {
 
 	private static final ScreenManager INSTANCE = new ScreenManager();

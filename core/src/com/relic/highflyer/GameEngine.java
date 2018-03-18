@@ -6,7 +6,12 @@ import com.relic.highflyer.screens.ScreenManager;
 
 public class GameEngine extends Game {
 
+	private final GameSettings settings;
 	private SpriteBatch batch;
+
+	public GameEngine(GameSettings settings) {
+		this.settings = settings;
+	}
 
 	@Override
 	public void create() {
@@ -28,5 +33,9 @@ public class GameEngine extends Game {
 
 	public SpriteBatch getBatch() {
 		return batch;
+	}
+
+	public GameSettings getSettings() {
+		return settings;
 	}
 }

@@ -3,15 +3,18 @@ package com.relic.highflyer.desktop;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.relic.highflyer.GameEngine;
+import com.relic.highflyer.GameSettings;
 
 public class DesktopLauncher {
 	public static void main(String[] arg) {
+		GameSettings settings = new GameSettings(AspectRatio.STANDARD.calculateWidth(600), 600);
+
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "High Flyer - Soars to the sky!";
 		config.useGL30 = true;
-		config.height = 600;
-		config.width = AspectRatio.STANDARD.calculateWidth(config.height);
-		new LwjglApplication(new GameEngine(), config);
+		config.height = settings.getWindowHeight();
+		config.width = settings.getWindowWidth();
+		new LwjglApplication(new GameEngine(settings), config);
 	}
 
 	public enum AspectRatio {

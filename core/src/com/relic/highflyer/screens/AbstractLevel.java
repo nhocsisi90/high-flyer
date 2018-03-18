@@ -32,10 +32,10 @@ public abstract class AbstractLevel extends ScreenAdapter {
 	}
 
 	protected abstract String getLevelMap();
-	
+
 	protected void init() {
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, 1200, 960);
+		camera.setToOrtho(false, game.getSettings().getWindowWidth(), game.getSettings().getWindowHeight());
 		camera.update();
 
 		final String tiledMapPath = "data/screens/" + getLevelMap();
@@ -51,6 +51,7 @@ public abstract class AbstractLevel extends ScreenAdapter {
 
 		player = new Player(getSpriteTextures(), map.getLayers(), 480, 1045);
 		player.setPosition(0 * TILE_SIZE, 6 * TILE_SIZE);
+		player.rotate(90);
 	}
 
 	@Override

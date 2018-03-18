@@ -8,3 +8,5 @@ bin
 **/.classpath
 **/.settings
 .settings
+# Ignoring this gradle files because Sang cannot use the same distributionUrl as Vu and Nhat
+gradle/wrapper/gradle-wrapper.properties
