@@ -1,4 +1,4 @@
-package com.sangngh.rpg.screens;
+package com.relic.highflyer.screens;
 
 import com.badlogic.gdx.ScreenAdapter;
 

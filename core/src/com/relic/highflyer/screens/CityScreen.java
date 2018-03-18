@@ -1,4 +1,4 @@
-package com.sangngh.rpg.screens;
+package com.relic.highflyer.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -10,14 +10,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.sangngh.rpg.MyGdxGame;
-import com.sangngh.rpg.entities.Player;
+import com.relic.highflyer.MyGdxGame;
+import com.relic.highflyer.entities.Player;
 
-public class WorldScreen implements Screen {
+public class CityScreen implements Screen {
 
 	private static final int TILE_SIZE = 16;
 
-	private static final String WORLD_MAP_TMX = "data/screens/world_map.tmx";
+	private static final String WORLD_MAP_TMX = "data/screens/lake_haven.tmx";
 	private static final String SPRITES = "data/sprites/toen_medival_tileset.png";
 
 	private MyGdxGame game;
@@ -26,7 +26,7 @@ public class WorldScreen implements Screen {
 	private AssetManager assetManager;
 	private Player player;
 
-	public WorldScreen(MyGdxGame game) {
+	public CityScreen(MyGdxGame game) {
 		this.game = game;
 
 		camera = new OrthographicCamera();

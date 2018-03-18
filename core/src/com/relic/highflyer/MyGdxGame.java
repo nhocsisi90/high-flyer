@@ -1,8 +1,8 @@
-package com.sangngh.rpg;
+package com.relic.highflyer;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.sangngh.rpg.screens.ScreenManager;
+import com.relic.highflyer.screens.ScreenManager;
 
 public class MyGdxGame extends Game {
 

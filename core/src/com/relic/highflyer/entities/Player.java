@@ -1,4 +1,4 @@
-package com.sangngh.rpg.entities;
+package com.relic.highflyer.entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -10,7 +10,7 @@ import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.utils.Disposable;
-import com.sangngh.rpg.screens.ScreenManager;
+import com.relic.highflyer.screens.ScreenManager;
 
 public class Player extends Sprite implements InputProcessor, Disposable {
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>relic-knight-desktop</name>
+	<name>high-flyer-desktop</name>
 	<comment>Project relic-knight-desktop created by Buildship.</comment>
 	<projects>
 	</projects>
@@ -27,4 +27,10 @@
 			<locationURI>PARENT-1-PROJECT_LOC/core/assets</locationURI>
 		</link>
 	</linkedResources>
+	<variableList>
+		<variable>
+			<name>copy_PARENT</name>
+			<value>$%7BPARENT-2-ECLIPSE_HOME%7D/game-workspaces/high-flyer</value>
+		</variable>
+	</variableList>
 </projectDescription>

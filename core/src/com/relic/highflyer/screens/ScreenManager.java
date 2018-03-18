@@ -1,4 +1,4 @@
-package com.sangngh.rpg.screens;
+package com.relic.highflyer.screens;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.Disposable;
-import com.sangngh.rpg.MyGdxGame;
+import com.relic.highflyer.MyGdxGame;
 
 public class ScreenManager implements Disposable {
 

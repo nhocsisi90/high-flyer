@@ -1,8 +1,8 @@
-package com.sangngh.rpg.desktop;
+package com.relic.highflyer.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.sangngh.rpg.MyGdxGame;
+import com.relic.highflyer.MyGdxGame;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
