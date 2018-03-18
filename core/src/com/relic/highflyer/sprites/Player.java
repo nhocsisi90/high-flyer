@@ -56,6 +56,8 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 
 		return true;
 	}
+	
+
 
 	private boolean isTileBlocked(float x, float y) {
 		Cell cell = getCell(x, y);

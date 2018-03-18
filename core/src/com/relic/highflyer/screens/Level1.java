@@ -10,6 +10,6 @@ public class Level1 extends AbstractLevel {
 
 	@Override
 	protected String getLevelMap() {
-		return "level_1.tmx";
+		return "lvl1_version2.tmx";
 	}
 }
