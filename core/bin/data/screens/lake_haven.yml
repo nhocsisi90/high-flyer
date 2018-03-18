@@ -1,0 +1,9 @@
+screen:
+  - map: data/screens/lake_haven.tmx
+  - entrances:
+    - position: 102,102
+      when_from: world_map
+  - exits:
+    - position: 0,1
+      to: world_map
+      to_location: 23,43
