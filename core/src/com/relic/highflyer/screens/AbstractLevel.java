@@ -36,7 +36,6 @@ public abstract class AbstractLevel extends ScreenAdapter {
 	protected void init() {
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, 1200, 960);
-		camera.zoom = .5f;
 		camera.update();
 
 		final String tiledMapPath = "data/screens/" + getLevelMap();
