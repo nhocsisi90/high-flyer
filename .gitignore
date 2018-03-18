@@ -7,3 +7,4 @@ bin
 .classpath
 **/.classpath
 **/.settings
+.settings

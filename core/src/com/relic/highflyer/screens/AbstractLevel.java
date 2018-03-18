@@ -15,7 +15,7 @@ import com.relic.highflyer.sprites.Player;
 
 public abstract class AbstractLevel extends ScreenAdapter {
 
-	private static final int TILE_SIZE = 16;
+	private static final int TILE_SIZE = 32;
 
 	private static final String SPRITES = "data/sprites/spaceShooter2_spritesheet.png";
 
@@ -35,7 +35,7 @@ public abstract class AbstractLevel extends ScreenAdapter {
 	
 	protected void init() {
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, 600, 480);
+		camera.setToOrtho(false, 1200, 960);
 		camera.zoom = .5f;
 		camera.update();
 
@@ -50,8 +50,8 @@ public abstract class AbstractLevel extends ScreenAdapter {
 		TiledMap map = assetManager.get(tiledMapPath);
 		renderer = new OrthogonalTiledMapRenderer(map);
 
-		player = new Player(getSpriteTextures(), map.getLayers(), 0, 256);
-		player.setPosition(23 * TILE_SIZE, 6 * TILE_SIZE);
+		player = new Player(getSpriteTextures(), map.getLayers(), 480, 1045);
+		player.setPosition(0 * TILE_SIZE, 6 * TILE_SIZE);
 	}
 
 	@Override

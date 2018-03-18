@@ -13,12 +13,11 @@ import com.badlogic.gdx.utils.Disposable;
 
 public class Player extends Sprite implements InputProcessor, Disposable {
 
-	private static final int TILE_SIZE = 16;
-
+	private static final float TILE_SIZE = 32;
 	private MapLayers mapLayers;
 
 	public Player(Texture texture, MapLayers mapLayers, int srcX, int srcY) {
-		super(texture, srcX, srcY, TILE_SIZE, TILE_SIZE);
+		super(texture, srcX, srcY, 106, 80);
 
 		this.mapLayers = mapLayers;
 
