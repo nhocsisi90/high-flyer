@@ -5,6 +5,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.relic.highflyer.GameEngine;
 import com.relic.highflyer.GameSettings;
 import com.relic.highflyer.GameState;
+import com.relic.highflyer.screens.ScreenManager;
 
 public class DesktopLauncher {
 	public static void main(String[] arg) {
@@ -15,7 +16,7 @@ public class DesktopLauncher {
 		config.useGL30 = false;
 		config.height = settings.getWindowHeight();
 		config.width = settings.getWindowWidth();
-		new LwjglApplication(new GameEngine(settings, new GameState()), config);
+		new LwjglApplication(new GameEngine(settings, new GameState(), new ScreenManager()), config);
 	}
 
 	public enum AspectRatio {

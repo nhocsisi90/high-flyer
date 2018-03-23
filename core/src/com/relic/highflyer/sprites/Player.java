@@ -2,7 +2,6 @@ package com.relic.highflyer.sprites;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -11,20 +10,24 @@ import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.utils.Disposable;
+import com.relic.highflyer.GameEngine;
+import com.relic.highflyer.sprites.move.PlayerMovementManager;
 
 public class Player extends Sprite implements InputProcessor, Disposable {
 
 	private static float TILE_SIZE = 32;
-	private MapLayers mapLayers;
-	private int timmer;
+	private final MapLayers mapLayers;
+	private final GameEngine game;
 
-	public Player(Texture texture, MapLayers mapLayers, int srcX, int srcY) {
+	private PlayerMovementManager mover = new PlayerMovementManager();
+
+	public Player(GameEngine game, Texture texture, MapLayers mapLayers, int srcX, int srcY) {
 		super(texture, srcX, srcY, 106, 80);
 
 		this.mapLayers = mapLayers;
+		this.game = game;
 
 		Gdx.input.setInputProcessor(this);
-
 	}
 
 	@Override
@@ -42,15 +45,15 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 		float nextY = getY();
 
 		switch (keycode) {
-//		case Input.Keys.LEFT:
-//
-//			nextX = getX() - TILE_SIZE;
-//			break;
-//		case Input.Keys.RIGHT:
-//
-//			nextX = getX() + TILE_SIZE;
-//			;
-//			break;
+		// case Input.Keys.LEFT:
+		//
+		// nextX = getX() - TILE_SIZE;
+		// break;
+		// case Input.Keys.RIGHT:
+		//
+		// nextX = getX() + TILE_SIZE;
+		// ;
+		// break;
 		case Input.Keys.UP:
 			nextY = getY() + TILE_SIZE;
 			break;
@@ -59,33 +62,9 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 			break;
 		}
 
-		if (!handleCollision(nextX+TILE_SIZE, nextY+ 2*TILE_SIZE)) {
-			setX(nextX);
-			setY(nextY);
-		}
+		mover.tryMove(game, getCell(nextX, nextY), this, nextX, nextY);
 
 		return true;
-	}
-	
-	private boolean handleCollision(float x, float y) {
-		if (isTileBlocked(x, y)) {
-			setX(0);
-			setY(32*4);
-			
-			return true;
-		}
-		
-		return false;
-	}
-
-	private boolean isTileBlocked(float x, float y) {
-		Cell cell = getCell(x + 32, y + 32);
-		return cell != null && cell.getTile().getProperties().containsKey("damage");
-	}
-	
-	private boolean isLanding(float x, float y) {
-		Cell cell = getCell(x, y);
-		return cell != null & cell.getTile().getProperties().containsKey("landing");
 	}
 
 	private Cell getCell(float x, float y) {
@@ -101,17 +80,15 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 	}
 
 	public void update(float deltaTime) {
-		//elapsedTime += Gdx.graphics.getDeltaTime();
+		// elapsedTime += Gdx.graphics.getDeltaTime();
 		float nextX = getX();
-	    // handle user input **always should come iffirst**
-	    
-	        nextX += deltaTime*100;
-	    if (!handleCollision(nextX, this.getY())) {
-	    	setX(nextX);
-	    }
-	    System.out.print(nextX);
+		// handle user input **always should come iffirst**
 
+		nextX += deltaTime * 100;
+		
+		mover.tryMove(game, getCell(nextX, getY()), this, nextX, getY());
 	}
+
 	@Override
 	public boolean keyUp(int keycode) {
 		return false;

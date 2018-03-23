@@ -12,20 +12,11 @@ import com.relic.highflyer.GameEngine;
  */
 public class ScreenManager implements Disposable {
 
-	private static final ScreenManager INSTANCE = new ScreenManager();
-
 	private GameEngine game;
 	private Map<String, Screen> screens = new HashMap<>();
-
-	private ScreenManager() {
-	}
-
-	public static void init(GameEngine game) {
-		INSTANCE.game = game;
-	}
-
-	public static ScreenManager instance() {
-		return INSTANCE;
+	
+	public void setGame(GameEngine game) {
+		this.game = game;
 	}
 
 	public Screen getInitial() {
