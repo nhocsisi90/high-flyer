@@ -59,7 +59,7 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 			break;
 		}
 
-		if (!isTileBlocked(nextX , nextY)) {
+		if (!isTileBlocked(nextX+TILE_SIZE, nextY+ 2*TILE_SIZE)) {
 			setX(nextX);
 			setY(nextY);
 		} else {

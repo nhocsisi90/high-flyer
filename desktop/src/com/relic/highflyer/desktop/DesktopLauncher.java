@@ -11,7 +11,7 @@ public class DesktopLauncher {
 
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "High Flyer - Soars to the sky!";
-		config.useGL30 = true;
+		config.useGL30 = false;
 		config.height = settings.getWindowHeight();
 		config.width = settings.getWindowWidth();
 		new LwjglApplication(new GameEngine(settings), config);
