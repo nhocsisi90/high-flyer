@@ -33,6 +33,11 @@ public class ScreenManager implements Disposable {
 		screens.put(Level1.class.getSimpleName(), screen);
 		return screen;
 	}
+	public void setScreen(AbstractLevel level ) {
+		game.setScreen(level);
+	}
+	
+	
 
 	@Override
 	public void dispose() {

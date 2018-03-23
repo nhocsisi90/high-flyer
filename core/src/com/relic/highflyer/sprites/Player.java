@@ -77,6 +77,12 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 		
 		return false;
 	}
+	private boolean handleLanding (float x, float y) {
+		if (isLanding(x,y)) {
+			
+		}
+		return true;
+	}
 
 	private boolean isTileBlocked(float x, float y) {
 		Cell cell = getCell(x + 32, y + 32);
