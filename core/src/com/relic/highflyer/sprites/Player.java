@@ -42,15 +42,15 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 		float nextY = getY();
 
 		switch (keycode) {
-		case Input.Keys.LEFT:
-
-			nextX = getX() - TILE_SIZE;
-			break;
-		case Input.Keys.RIGHT:
-
-			nextX = getX() + TILE_SIZE;
-			;
-			break;
+//		case Input.Keys.LEFT:
+//
+//			nextX = getX() - TILE_SIZE;
+//			break;
+//		case Input.Keys.RIGHT:
+//
+//			nextX = getX() + TILE_SIZE;
+//			;
+//			break;
 		case Input.Keys.UP:
 			nextY = getY() + TILE_SIZE;
 			break;
@@ -59,15 +59,23 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 			break;
 		}
 
-		if (!isTileBlocked(nextX+TILE_SIZE, nextY+ 2*TILE_SIZE)) {
+		if (!handleCollision(nextX+TILE_SIZE, nextY+ 2*TILE_SIZE)) {
 			setX(nextX);
 			setY(nextY);
-		} else {
-			setX(0);
-			setY(32*4);
 		}
 
 		return true;
+	}
+	
+	private boolean handleCollision(float x, float y) {
+		if (isTileBlocked(x, y)) {
+			setX(0);
+			setY(32*4);
+			
+			return true;
+		}
+		
+		return false;
 	}
 
 	private boolean isTileBlocked(float x, float y) {
@@ -93,7 +101,9 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 	    // handle user input **always should come iffirst**
 	    
 	        nextX += deltaTime*100;
-	    setX(nextX);
+	    if (!handleCollision(nextX, this.getY())) {
+	    	setX(nextX);
+	    }
 	    System.out.print(nextX);
 
 	}
