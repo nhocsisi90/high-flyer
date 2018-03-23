@@ -7,10 +7,12 @@ import com.badlogic.gdx.assets.loaders.resolvers.ClasspathFileHandleResolver;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.relic.highflyer.GameEngine;
+import com.relic.highflyer.GameState;
 import com.relic.highflyer.sprites.Player;
 
 public abstract class AbstractLevel extends ScreenAdapter {
@@ -26,6 +28,7 @@ public abstract class AbstractLevel extends ScreenAdapter {
 	private AssetManager assetManager;
 	private Player player;
 	private float elapsedTime = 0;
+	private BitmapFont bitMapFontName;
 
 	public AbstractLevel(GameEngine game) {
 		this.game = game;
@@ -53,6 +56,7 @@ public abstract class AbstractLevel extends ScreenAdapter {
 		player = new Player(getSpriteTextures(), map.getLayers(), 480, 1045);
 		player.setPosition(0 * TILE_SIZE, 6 * TILE_SIZE);
 		player.rotate(90);
+		
 	}
 
 	@Override
@@ -72,7 +76,11 @@ public abstract class AbstractLevel extends ScreenAdapter {
 		game.getBatch().setProjectionMatrix(camera.combined);
 		game.getBatch().begin();
 		
+		bitMapFontName = new BitmapFont();
+		
 		player.draw(game.getBatch());
+		bitMapFontName.setColor(1.0f,1.0f,1.0f,1.0f);
+		bitMapFontName.draw(game.getBatch(), ""+game.getState().getScore(), 0 + camera.position.x - 500, 0+camera.position.y+300);
 		
 		game.getBatch().end();
 		

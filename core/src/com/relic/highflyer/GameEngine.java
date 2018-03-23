@@ -7,10 +7,12 @@ import com.relic.highflyer.screens.ScreenManager;
 public class GameEngine extends Game {
 
 	private final GameSettings settings;
+	private final GameState state;
 	private SpriteBatch batch;
 
-	public GameEngine(GameSettings settings) {
+	public GameEngine(GameSettings settings, GameState state) {
 		this.settings = settings;
+		this.state = state;
 	}
 
 	@Override
@@ -39,5 +41,9 @@ public class GameEngine extends Game {
 
 	public GameSettings getSettings() {
 		return settings;
+	}
+
+	public GameState getState() {
+		return state;
 	}
 }
