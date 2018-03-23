@@ -68,7 +68,6 @@ public abstract class AbstractLevel extends ScreenAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		// let the camera follow the player
 		camera.position.x = player.getX();
-		camera.position.y = player.getY();
 		camera.update();
 		renderer.setView(camera);
 		renderer.render();
