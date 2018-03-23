@@ -68,16 +68,17 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 	}
 
 	private Cell getCell(float x, float y) {
-		TiledMapTileLayer backgroundLayer = getBackgroundLayer();
+		TiledMapTileLayer backgroundLayer = getBuildingLayer();
 		int tileX = (int) (x / backgroundLayer.getTileWidth());
 		int tileY = (int) (y / backgroundLayer.getTileHeight());
 
 		return backgroundLayer.getCell(tileX, tileY);
 	}
 
-	private TiledMapTileLayer getBackgroundLayer() {
-		return (TiledMapTileLayer) mapLayers.get(0);
+	private TiledMapTileLayer getBuildingLayer() {
+		return (TiledMapTileLayer) mapLayers.get(1);
 	}
+	
 
 	public void update(float deltaTime) {
 		// elapsedTime += Gdx.graphics.getDeltaTime();
