@@ -25,6 +25,7 @@ public abstract class AbstractLevel extends ScreenAdapter {
 	private OrthogonalTiledMapRenderer renderer;
 	private AssetManager assetManager;
 	private Player player;
+	private float elapsedTime = 0;
 
 	public AbstractLevel(GameEngine game) {
 		this.game = game;
@@ -56,6 +57,9 @@ public abstract class AbstractLevel extends ScreenAdapter {
 
 	@Override
 	public void render(float delta) {
+		//float dt = Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f);
+		
+		player.update(delta);
 		Gdx.gl.glClearColor(100f / 255f, 100f / 255f, 250f / 255f, 1f);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		// let the camera follow the player
@@ -67,9 +71,27 @@ public abstract class AbstractLevel extends ScreenAdapter {
 
 		game.getBatch().setProjectionMatrix(camera.combined);
 		game.getBatch().begin();
+		
 		player.draw(game.getBatch());
+		
 		game.getBatch().end();
+		
+		/*
+	     * Get the time it took to render the last frame and make sure our delta
+	     * time is never larger than 0.0166666666666667 (60 FPS). This will
+	     * ensure that on fast OS the game at only 60 FPS.
+	     */
+	   
+
+	    // **********************UPDATE*********************
+
+	    //System.out.print(elapsedTime);
+
+		
 	}
+	
+	
+	
 
 	private Texture getSpriteTextures() {
 		return (Texture) assetManager.get(SPRITES);

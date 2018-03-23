@@ -2,6 +2,7 @@ package com.relic.highflyer.sprites;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -88,6 +89,16 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 		return (TiledMapTileLayer) mapLayers.get(0);
 	}
 
+	public void update(float deltaTime) {
+		//elapsedTime += Gdx.graphics.getDeltaTime();
+		float nextX = getX();
+	    // handle user input **always should come iffirst**
+	    
+	        nextX += deltaTime*100;
+	    setX(nextX);
+	    System.out.print(nextX);
+
+	}
 	@Override
 	public boolean keyUp(int keycode) {
 		return false;
