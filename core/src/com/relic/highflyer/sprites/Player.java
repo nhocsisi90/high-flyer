@@ -16,6 +16,7 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 
 	private static float TILE_SIZE = 32;
 	private MapLayers mapLayers;
+	private int timmer;
 
 	public Player(Texture texture, MapLayers mapLayers, int srcX, int srcY) {
 		super(texture, srcX, srcY, 106, 80);
@@ -23,34 +24,31 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 		this.mapLayers = mapLayers;
 
 		Gdx.input.setInputProcessor(this);
-		
-		
+
 	}
 
 	@Override
 	public void draw(Batch batch) {
 		super.draw(batch);
 	}
+
 	public void move() {
-		
+
 	}
 
 	@Override
 	public boolean keyDown(int keycode) {
 		float nextX = getX();
 		float nextY = getY();
-		
-		
-		
 
 		switch (keycode) {
 		case Input.Keys.LEFT:
-			
+
 			nextX = getX() - TILE_SIZE;
 			break;
 		case Input.Keys.RIGHT:
-			
-			nextX += getX() + TILE_SIZE;
+
+			nextX = getX() + TILE_SIZE;
 			;
 			break;
 		case Input.Keys.UP:
@@ -59,21 +57,21 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 		case Input.Keys.DOWN:
 			nextY = getY() - TILE_SIZE;
 			break;
-		}		
+		}
 
-		if (!isTileBlocked(nextX, nextY)) {
+		if (!isTileBlocked(nextX , nextY)) {
 			setX(nextX);
 			setY(nextY);
+		} else {
+			setX(0);
+			setY(32*4);
 		}
 
 		return true;
 	}
 
-	
-
-
 	private boolean isTileBlocked(float x, float y) {
-		Cell cell = getCell(x, y);
+		Cell cell = getCell(x + 32, y + 32);
 		return cell != null && cell.getTile().getProperties().containsKey("damage");
 	}
 
