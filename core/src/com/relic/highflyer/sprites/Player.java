@@ -82,6 +82,11 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 		Cell cell = getCell(x + 32, y + 32);
 		return cell != null && cell.getTile().getProperties().containsKey("damage");
 	}
+	
+	private boolean isLanding(float x, float y) {
+		Cell cell = getCell(x, y);
+		return cell != null & cell.getTile().getProperties().containsKey("landing");
+	}
 
 	private Cell getCell(float x, float y) {
 		TiledMapTileLayer backgroundLayer = getBackgroundLayer();
