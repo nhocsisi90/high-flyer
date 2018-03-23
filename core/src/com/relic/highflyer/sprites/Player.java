@@ -58,19 +58,19 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 			break;
 		}
 
-		if (!isTileBlocked(nextX+TILE_SIZE, nextY+ 2*TILE_SIZE)) {
+		if (!isTileBlocked(nextX , nextY)) {
 			setX(nextX);
 			setY(nextY);
 		} else {
 			setX(0);
-			setY(32*3);
+			setY(32*4);
 		}
 
 		return true;
 	}
 
 	private boolean isTileBlocked(float x, float y) {
-		Cell cell = getCell(x, y);
+		Cell cell = getCell(x + 32, y + 32);
 		return cell != null && cell.getTile().getProperties().containsKey("damage");
 	}
 
