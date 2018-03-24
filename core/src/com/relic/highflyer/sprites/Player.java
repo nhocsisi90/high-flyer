@@ -16,8 +16,8 @@ import com.relic.highflyer.sprites.move.PlayerMovementManager;
 public class Player extends Sprite implements InputProcessor, Disposable {
 
 	private static final float TILE_SIZE = 32;
-	private static final int PLAYER_WIDTH = 106;
-	private static final int PLAYER_HEIGHT = 80;
+	private static final int PLAYER_TEXTURE_WIDTH = 106;
+	private static final int PLAYER_TEXTURE_HEIGHT = 80;
 
 	private final MapLayers mapLayers;
 	private final GameEngine game;
@@ -25,12 +25,21 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 	private PlayerMovementManager mover = new PlayerMovementManager();
 
 	public Player(GameEngine game, Texture texture, MapLayers mapLayers, int srcX, int srcY) {
-		super(texture, srcX, srcY, PLAYER_WIDTH, PLAYER_HEIGHT);
+		super(texture, srcX, srcY, PLAYER_TEXTURE_WIDTH, PLAYER_TEXTURE_HEIGHT);
 
 		this.mapLayers = mapLayers;
 		this.game = game;
 
 		Gdx.input.setInputProcessor(this);
+	}
+
+	public int getPlayerWidth() {
+		// Actual width is a little less than the texture
+		return PLAYER_TEXTURE_WIDTH - 20;
+	}
+
+	public int getPlayerHeight() {
+		return PLAYER_TEXTURE_HEIGHT;
 	}
 
 	@Override
@@ -47,6 +56,9 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 		float nextX = getX();
 		float nextY = getY();
 
+		float nextCellX = getX();
+		float nextCellY = getY();
+
 		switch (keycode) {
 		// case Input.Keys.LEFT:
 		//
@@ -59,13 +71,17 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 		// break;
 		case Input.Keys.UP:
 			nextY = getY() + TILE_SIZE;
+			nextCellY = nextY + getPlayerHeight();
+			nextCellX = nextX + getPlayerWidth();
 			break;
 		case Input.Keys.DOWN:
 			nextY = getY() - TILE_SIZE;
+			nextCellY = nextY;
+			nextCellX = nextX + getPlayerWidth();
 			break;
 		}
 
-		mover.tryMove(game, getCell(nextX + PLAYER_WIDTH, nextY + PLAYER_HEIGHT), this, nextX, nextY);
+		mover.tryMove(game, getCell(nextCellX, nextCellY), this, nextX, nextY);
 
 		return true;
 	}
@@ -89,7 +105,10 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 
 		nextX += deltaTime * 100;
 
-		mover.tryMove(game, getCell(nextX, getY()), this, nextX, getY());
+		float nextCellY = getY() + getPlayerHeight();
+		float nextCellX = nextX + getPlayerWidth();
+
+		mover.tryMove(game, getCell(nextCellX, nextCellY), this, nextX, getY());
 	}
 
 	@Override

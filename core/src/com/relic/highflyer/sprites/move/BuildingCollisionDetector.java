@@ -13,7 +13,7 @@ public class BuildingCollisionDetector implements CollisionDetector {
 		if (isBuildingCell(nextCell, nextX, nextY)) {
 			// TODO: Handle damage and sounds
 			player.setX(0);
-			player.setY(32*4);
+			player.setY((game.getSettings().getWindowHeight()/2) - (player.getPlayerHeight()/2));
 			
 			Sound shutdownSound = Gdx.audio.newSound(Gdx.files.internal("data/sounds/Shutdown.wav"));
 			shutdownSound.play();
