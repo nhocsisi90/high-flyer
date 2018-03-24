@@ -1,5 +1,7 @@
 package com.relic.highflyer.sprites.move;
 
+import java.util.List;
+
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.relic.highflyer.GameEngine;
 import com.relic.highflyer.screens.EndLevel;
@@ -10,8 +12,8 @@ public class LandingDetector implements CollisionDetector {
 
 	private EndLevel endLevel= new EndLevel();
 	@Override
-	public boolean detect(GameEngine game, Cell currentCell, Player player, float nextX, float nextY) {
-		if (isLandingCell(currentCell, nextX, nextY)) {
+	public boolean detect(GameEngine game, List<Cell> nextCells, Player player, float nextX, float nextY) {
+		if (isLandingCell(nextCells, nextX, nextY)) {
 			endLevel.finishStage(game.getState());
 			Level2 lvl2 = new Level2(game);
 			game.getState().setLvl(2);
@@ -26,8 +28,14 @@ public class LandingDetector implements CollisionDetector {
 		return false;
 	}
 
-	private boolean isLandingCell(Cell cell, float x, float y) {
-		return cell != null && cell.getTile() != null && cell.getTile().getProperties().containsKey("landing");
+	private boolean isLandingCell(List<Cell> nextCells, float x, float y) {
+		for (Cell cell: nextCells) {
+			if (cell != null && cell.getTile() != null && cell.getTile().getProperties().containsKey("landing")) {
+				return true;
+			}
+		}
+		return false;
+		
 	}
 
 }

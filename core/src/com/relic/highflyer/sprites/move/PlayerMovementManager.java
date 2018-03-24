@@ -18,10 +18,10 @@ public class PlayerMovementManager {
 		collisionDetectors.add(new PowerUpDetector());
 	}
 
-	public boolean tryMove(GameEngine game, Cell nextCell, Player player, float nextX, float nextY) {
+	public boolean tryMove(GameEngine game, List<Cell> nextCells, Player player, float nextX, float nextY) {
 		boolean canMove = true;
 		for (CollisionDetector collisionDetector : collisionDetectors) {
-			boolean hasCollision = collisionDetector.detect(game, nextCell, player, nextX, nextY);
+			boolean hasCollision = collisionDetector.detect(game, nextCells, player, nextX, nextY);
 			if (hasCollision) {
 				return false;
 			}

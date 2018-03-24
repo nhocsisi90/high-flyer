@@ -116,16 +116,6 @@
    <property name="damage" type="bool" value="true"/>
   </properties>
  </tile>
- <tile id="955">
-  <properties>
-   <property name="power" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="956">
-  <properties>
-   <property name="power" type="bool" value="true"/>
-  </properties>
- </tile>
  <tile id="976">
   <properties>
    <property name="damage" type="bool" value="true"/>
@@ -151,16 +141,6 @@
    <property name="damage" type="bool" value="true"/>
   </properties>
  </tile>
- <tile id="987">
-  <properties>
-   <property name="power" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="988">
-  <properties>
-   <property name="power" type="bool" value="true"/>
-  </properties>
- </tile>
  <tile id="1008">
   <properties>
    <property name="damage" type="bool" value="true"/>
@@ -177,16 +157,6 @@
   </properties>
  </tile>
  <tile id="1018">
-  <properties>
-   <property name="power" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="1019">
-  <properties>
-   <property name="power" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="1020">
   <properties>
    <property name="power" type="bool" value="true"/>
   </properties>

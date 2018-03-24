@@ -1,5 +1,8 @@
 package com.relic.highflyer.sprites;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
@@ -59,6 +62,7 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 		float nextCellX = getX();
 		float nextCellY = getY();
 
+		List<Cell> nextCells = new ArrayList<>();
 		switch (keycode) {
 		// case Input.Keys.LEFT:
 		//
@@ -73,20 +77,33 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 			nextY = getY() + TILE_SIZE;
 			nextCellY = nextY + getPlayerHeight();
 			nextCellX = nextX + getPlayerWidth();
+			
+			int count = (int) Math.ceil(this.getPlayerWidth() / TILE_SIZE);
+			for (int i = 0; i < count; i++) {
+				Cell cell = getCell(nextCellX - (i * TILE_SIZE), nextCellY);
+				nextCells.add(cell);
+			}
 			break;
 		case Input.Keys.DOWN:
 			nextY = getY() - TILE_SIZE;
 			nextCellY = nextY;
 			nextCellX = nextX + getPlayerWidth();
+			
+			count = (int) Math.ceil(this.getPlayerWidth() / TILE_SIZE);
+			for (int i = 0; i < count; i++) {
+				Cell cell = getCell(nextCellX - (i * TILE_SIZE), nextCellY);
+				nextCells.add(cell);
+			}
 			break;
 		}
-
-		mover.tryMove(game, getCell(nextCellX, nextCellY), this, nextX, nextY);
+		
+		mover.tryMove(game, nextCells, this, nextX, nextY);
 
 		return true;
 	}
 
 	private Cell getCell(float x, float y) {
+		System.out.println(String.format("Getting cell X=%s, Y=%s", x,y));
 		TiledMapTileLayer backgroundLayer = getBuildingLayer();
 		int tileX = (int) (x / backgroundLayer.getTileWidth());
 		int tileY = (int) (y / backgroundLayer.getTileHeight());
@@ -107,8 +124,15 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 
 		float nextCellY = getY() + getPlayerHeight();
 		float nextCellX = nextX + getPlayerWidth();
+		
+		List<Cell> nextCells = new ArrayList<>();
+		int nextCellsCount = (int) Math.ceil(this.getPlayerHeight() / TILE_SIZE);
+		for (int i = 0; i < nextCellsCount; i++) {
+			Cell cell = getCell(nextCellX, nextCellY - (i * TILE_SIZE));
+			nextCells.add(cell);
+		}
 
-		mover.tryMove(game, getCell(nextCellX, nextCellY), this, nextX, getY());
+		mover.tryMove(game, nextCells, this, nextX, getY());
 	}
 
 	@Override
