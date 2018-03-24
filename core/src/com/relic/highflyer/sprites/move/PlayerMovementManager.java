@@ -15,10 +15,10 @@ public class PlayerMovementManager {
 		collisionDetectors.add(new BuildingCollisionDetector());collisionDetectors.add(new LandingDetector());
 	}
 
-	public boolean tryMove(GameEngine game, Cell currentCell, Player player, float nextX, float nextY) {
+	public boolean tryMove(GameEngine game, Cell nextCell, Player player, float nextX, float nextY) {
 		boolean canMove = true;
 		for (CollisionDetector collisionDetector : collisionDetectors) {
-			boolean hasCollision = collisionDetector.detect(game, currentCell, player, nextX, nextY);
+			boolean hasCollision = collisionDetector.detect(game, nextCell, player, nextX, nextY);
 			if (hasCollision) {
 				return false;
 			}

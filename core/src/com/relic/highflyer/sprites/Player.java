@@ -15,14 +15,17 @@ import com.relic.highflyer.sprites.move.PlayerMovementManager;
 
 public class Player extends Sprite implements InputProcessor, Disposable {
 
-	private static float TILE_SIZE = 32;
+	private static final float TILE_SIZE = 32;
+	private static final int PLAYER_WIDTH = 106;
+	private static final int PLAYER_HEIGHT = 80;
+
 	private final MapLayers mapLayers;
 	private final GameEngine game;
 
 	private PlayerMovementManager mover = new PlayerMovementManager();
 
 	public Player(GameEngine game, Texture texture, MapLayers mapLayers, int srcX, int srcY) {
-		super(texture, srcX, srcY, 106, 80);
+		super(texture, srcX, srcY, PLAYER_WIDTH, PLAYER_HEIGHT);
 
 		this.mapLayers = mapLayers;
 		this.game = game;
@@ -62,7 +65,7 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 			break;
 		}
 
-		mover.tryMove(game, getCell(nextX, nextY), this, nextX, nextY);
+		mover.tryMove(game, getCell(nextX + PLAYER_WIDTH, nextY + PLAYER_HEIGHT), this, nextX, nextY);
 
 		return true;
 	}
