@@ -7,8 +7,8 @@ import com.relic.highflyer.sprites.Player;
 public class BuildingCollisionDetector implements CollisionDetector {
 
 	@Override
-	public boolean detect(GameEngine game, Cell currentCell, Player player, float nextX, float nextY) {
-		if (isBuildingCell(currentCell, nextX, nextY)) {
+	public boolean detect(GameEngine game, Cell nextCell, Player player, float nextX, float nextY) {
+		if (isBuildingCell(nextCell, nextX, nextY)) {
 			// TODO: Handle damage and sounds
 			player.setX(0);
 			player.setY(32*4);

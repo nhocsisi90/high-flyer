@@ -6,5 +6,5 @@ import com.relic.highflyer.sprites.Player;
 
 public interface CollisionDetector {
 
-	boolean detect(GameEngine game, Cell currentCell, Player player, float nextX, float nextY);
+	boolean detect(GameEngine game, Cell nextCell, Player player, float nextX, float nextY);
 }
