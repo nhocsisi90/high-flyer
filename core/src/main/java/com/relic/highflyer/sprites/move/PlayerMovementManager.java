@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.relic.highflyer.GameEngine;
+import com.relic.highflyer.sounds.SoundPlayer;
 import com.relic.highflyer.sprites.Player;
 
 public class PlayerMovementManager {
@@ -12,7 +13,9 @@ public class PlayerMovementManager {
 	private List<CollisionDetector> collisionDetectors = new ArrayList<>();
 
 	public PlayerMovementManager() {
-		collisionDetectors.add(new BuildingCollisionDetector());
+		SoundPlayer soundPlayer = new SoundPlayer();
+		
+		collisionDetectors.add(new BuildingCollisionDetector(soundPlayer));
 		collisionDetectors.add(new WindowCollisionDetector());
 		collisionDetectors.add(new LandingDetector());
 		collisionDetectors.add(new PowerUpDetector());

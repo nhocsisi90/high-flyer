@@ -103,7 +103,6 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 	}
 
 	private Cell getCell(float x, float y) {
-		System.out.println(String.format("Getting cell X=%s, Y=%s", x,y));
 		TiledMapTileLayer backgroundLayer = getBuildingLayer();
 		int tileX = (int) (x / backgroundLayer.getTileWidth());
 		int tileY = (int) (y / backgroundLayer.getTileHeight());
@@ -116,9 +115,7 @@ public class Player extends Sprite implements InputProcessor, Disposable {
 	}
 
 	public void update(float deltaTime) {
-		// elapsedTime += Gdx.graphics.getDeltaTime();
 		float nextX = getX();
-		// handle user input **always should come iffirst**
 
 		nextX += deltaTime * 100;
 

@@ -22,7 +22,7 @@ allprojects {
         ashleyVersion = '1.7.0'
         aiVersion = '1.8.0'
     }
-
+	
     repositories {
         mavenLocal()
         mavenCentral()
@@ -57,6 +57,9 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx-ai:$aiVersion"
         compile "de.tomgrill.gdxdialogs:gdx-dialogs-core:1.1.0"
         compile "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.8.5"
+		
+		testCompile "junit:junit:4.12"
+		testCompile "org.mockito:mockito-all:1.10.19"
     }
 }
 
