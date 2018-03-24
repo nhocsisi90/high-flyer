@@ -14,7 +14,7 @@ public class PlayerMovementManager {
 	public PlayerMovementManager() {
 		collisionDetectors.add(new BuildingCollisionDetector());
 		collisionDetectors.add(new WindowCollisionDetector());
-		//collisionDetectors.add(new LandingDetector());
+		collisionDetectors.add(new LandingDetector());
 		collisionDetectors.add(new PowerUpDetector());
 	}
 

@@ -16,6 +16,8 @@ public class PowerUpDetector implements CollisionDetector  {
 			
 			Sound shutdownSound = Gdx.audio.newSound(Gdx.files.internal("data/sounds/PowerUp.wav"));
 			shutdownSound.play();
+			game.getState().addPowerUp();
+			
 			return true;
 		}
 		
@@ -23,7 +25,7 @@ public class PowerUpDetector implements CollisionDetector  {
 	}
 
 	private boolean isPowerCell(Cell cell, float x, float y) {
-		return cell != null && cell.getTile().getProperties().containsKey("power");
+		return cell != null && cell.getTile() != null && cell.getTile().getProperties().containsKey("power");
 	}
 
 

@@ -17,6 +17,7 @@ public class BuildingCollisionDetector implements CollisionDetector {
 			
 			Sound shutdownSound = Gdx.audio.newSound(Gdx.files.internal("data/sounds/Shutdown.wav"));
 			shutdownSound.play();
+			game.getState().penaltyDeath();
 			return true;
 		}
 		
@@ -24,7 +25,7 @@ public class BuildingCollisionDetector implements CollisionDetector {
 	}
 
 	private boolean isBuildingCell(Cell cell, float x, float y) {
-		return cell != null && cell.getTile().getProperties().containsKey("damage");
+		return cell != null && cell.getTile() != null && cell.getTile().getProperties().containsKey("damage");
 	}
 
 }

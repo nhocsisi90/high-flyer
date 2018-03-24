@@ -27,7 +27,7 @@ public class LandingDetector implements CollisionDetector {
 	}
 
 	private boolean isLandingCell(Cell cell, float x, float y) {
-		return cell != null && cell.getTile().getProperties().containsKey("landing");
+		return cell != null && cell.getTile() != null && cell.getTile().getProperties().containsKey("landing");
 	}
 
 }
