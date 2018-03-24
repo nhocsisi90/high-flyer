@@ -11,7 +11,7 @@ public class BuildingCollisionDetector implements CollisionDetector {
 		if (isBuildingCell(nextCell, nextX, nextY)) {
 			// TODO: Handle damage and sounds
 			player.setX(0);
-			player.setY(32*4);
+			player.setY((game.getSettings().getWindowHeight()/2) - (player.getPlayerHeight()/2));
 			return true;
 		}
 		

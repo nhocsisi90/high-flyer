@@ -12,7 +12,9 @@ public class PlayerMovementManager {
 	private List<CollisionDetector> collisionDetectors = new ArrayList<>();
 
 	public PlayerMovementManager() {
-		collisionDetectors.add(new BuildingCollisionDetector());collisionDetectors.add(new LandingDetector());
+		collisionDetectors.add(new BuildingCollisionDetector());
+		collisionDetectors.add(new WindowCollisionDetector());
+		collisionDetectors.add(new LandingDetector());
 	}
 
 	public boolean tryMove(GameEngine game, Cell nextCell, Player player, float nextX, float nextY) {
