@@ -17,7 +17,7 @@ public class LandingDetector implements CollisionDetector {
 			game.getState().setLvl(2);
 			game.setScreen(lvl2);
 			player.setX(0);
-			player.setY(32*4);
+			player.setY((game.getSettings().getWindowHeight()/2) - (player.getPlayerHeight()/2));
 			
 			
 			return true;
