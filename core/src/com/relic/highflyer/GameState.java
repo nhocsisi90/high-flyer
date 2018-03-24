@@ -22,8 +22,8 @@ public class GameState {
 		this.lvl = lvl;
 	}
 	
-	public void addLvlUp(int lv) {
-		this.score+= 50 + lvl*10;
+	public void addLvlUp() {
+		this.score+= 50 + this.lvl*10;
 	}
 	
 	public void addKill() {
