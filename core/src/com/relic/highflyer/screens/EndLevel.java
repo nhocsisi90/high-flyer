@@ -16,10 +16,7 @@ public class EndLevel {
 		Sound finishSound = Gdx.audio.newSound(Gdx.files.internal("data/sounds/Finish.wav"));
 		finishSound.play();
 		
-		state.addLvlUp();
-		
-		
-		
+		state.addLvlUp();	
 
 	}
 

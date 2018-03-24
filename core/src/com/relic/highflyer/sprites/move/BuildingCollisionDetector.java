@@ -1,5 +1,7 @@
 package com.relic.highflyer.sprites.move;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.relic.highflyer.GameEngine;
 import com.relic.highflyer.sprites.Player;
@@ -12,6 +14,9 @@ public class BuildingCollisionDetector implements CollisionDetector {
 			// TODO: Handle damage and sounds
 			player.setX(0);
 			player.setY(32*4);
+			
+			Sound shutdownSound = Gdx.audio.newSound(Gdx.files.internal("data/sounds/Shutdown.wav"));
+			shutdownSound.play();
 			return true;
 		}
 		
