@@ -91,21 +91,6 @@
    <property name="damage" type="bool" value="true"/>
   </properties>
  </tile>
- <tile id="925">
-  <properties>
-   <property name="landing" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="926">
-  <properties>
-   <property name="landing" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="927">
-  <properties>
-   <property name="landing" type="bool" value="true"/>
-  </properties>
- </tile>
  <tile id="944">
   <properties>
    <property name="damage" type="bool" value="true"/>
@@ -139,21 +124,6 @@
  <tile id="956">
   <properties>
    <property name="power" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="957">
-  <properties>
-   <property name="landing" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="958">
-  <properties>
-   <property name="landing" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="959">
-  <properties>
-   <property name="landing" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="976">
@@ -191,21 +161,6 @@
    <property name="power" type="bool" value="true"/>
   </properties>
  </tile>
- <tile id="989">
-  <properties>
-   <property name="landing" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="990">
-  <properties>
-   <property name="landing" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="991">
-  <properties>
-   <property name="landing" type="bool" value="true"/>
-  </properties>
- </tile>
  <tile id="1008">
   <properties>
    <property name="damage" type="bool" value="true"/>
@@ -234,21 +189,6 @@
  <tile id="1020">
   <properties>
    <property name="power" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="1021">
-  <properties>
-   <property name="landing" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="1022">
-  <properties>
-   <property name="landing" type="bool" value="true"/>
-  </properties>
- </tile>
- <tile id="1023">
-  <properties>
-   <property name="landing" type="bool" value="true"/>
   </properties>
  </tile>
 </tileset>
