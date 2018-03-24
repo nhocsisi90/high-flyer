@@ -14,6 +14,7 @@ public class PlayerMovementManager {
 	public PlayerMovementManager() {
 		collisionDetectors.add(new BuildingCollisionDetector());
 		collisionDetectors.add(new WindowCollisionDetector());
+		collisionDetectors.add(new LandingDetector());
 	}
 
 	public boolean tryMove(GameEngine game, Cell nextCell, Player player, float nextX, float nextY) {
