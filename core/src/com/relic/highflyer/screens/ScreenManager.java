@@ -17,15 +17,9 @@ public class ScreenManager implements Disposable {
 	private GameEngine game;
 	private Map<String, Screen> screens = new HashMap<>();
 
-	private ScreenManager() {
-	}
-
-	public static void init(GameEngine game) {
-		INSTANCE.game = game;
-	}
-
-	public static ScreenManager instance() {
-		return INSTANCE;
+	
+	public void setGame(GameEngine game) {
+		this.game = game;
 	}
 
 	public Screen getInitial() {
@@ -33,6 +27,7 @@ public class ScreenManager implements Disposable {
 		screens.put(Level1.class.getSimpleName(), screen);
 		return screen;
 	}
+	
 	public void setScreen(AbstractLevel level ) {
 		game.setScreen(level);
 	}
