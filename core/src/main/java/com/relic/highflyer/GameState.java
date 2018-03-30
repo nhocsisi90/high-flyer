@@ -30,8 +30,14 @@ public class GameState {
 		this.score+= 50;
 	}
 	
-	public void addPowerUp() {
-		this.score+=10;
+	public void addPowerUp(String typePower) {
+      switch  (typePower)
+		{
+		case "star":
+			this.score+=10;
+			break;
+		}
+			
 	}
 	
 	public void penaltyDeath() {

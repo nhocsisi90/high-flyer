@@ -18,7 +18,7 @@ public class PlayerMovementManager {
 		collisionDetectors.add(new BuildingCollisionDetector(soundPlayer));
 		collisionDetectors.add(new WindowCollisionDetector());
 		collisionDetectors.add(new LandingDetector());
-		collisionDetectors.add(new PowerUpDetector());
+		collisionDetectors.add(new PowerUpDetector(soundPlayer));
 	}
 
 	public boolean tryMove(GameEngine game, List<Cell> nextCells, Player player, float nextX, float nextY) {
