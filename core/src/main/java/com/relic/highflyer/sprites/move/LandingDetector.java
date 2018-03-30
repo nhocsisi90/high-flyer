@@ -11,6 +11,11 @@ import com.relic.highflyer.sprites.Player;
 public class LandingDetector implements CollisionDetector {
 
 	private EndLevel endLevel= new EndLevel();
+	
+	public LandingDetector(EndLevel endLLevel) {
+		this.endLevel = endLLevel;
+	}
+	
 	@Override
 	public boolean detect(GameEngine game, List<Cell> nextCells, Player player, float nextX, float nextY) {
 		if (isLandingCell(nextCells, nextX, nextY)) {

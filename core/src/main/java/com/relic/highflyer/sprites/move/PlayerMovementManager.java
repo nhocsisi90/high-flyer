@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.relic.highflyer.GameEngine;
+import com.relic.highflyer.screens.EndLevel;
 import com.relic.highflyer.sounds.SoundPlayer;
 import com.relic.highflyer.sprites.Player;
 
@@ -14,10 +15,11 @@ public class PlayerMovementManager {
 
 	public PlayerMovementManager() {
 		SoundPlayer soundPlayer = new SoundPlayer();
+		EndLevel endlevl = new EndLevel();
 		
 		collisionDetectors.add(new BuildingCollisionDetector(soundPlayer));
 		collisionDetectors.add(new WindowCollisionDetector());
-		collisionDetectors.add(new LandingDetector());
+		collisionDetectors.add(new LandingDetector(endlevl));
 		collisionDetectors.add(new PowerUpDetector());
 	}
 
