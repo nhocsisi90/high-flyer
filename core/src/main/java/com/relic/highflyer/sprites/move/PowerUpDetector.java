@@ -35,7 +35,7 @@ public class PowerUpDetector implements CollisionDetector  {
 	private boolean isPowerCell(List<Cell> nextCells, float x, float y) {
 		for (Cell cell: nextCells) {
 			if (cell != null && cell.getTile() != null && cell.getTile().getProperties().containsKey("power")) {
-				typePower= (String) cell.getTile().getProperties().get("power");
+				typePower= cell.getTile().getProperties().get("power").toString();
 				cell.setTile(null);
 				return true;
 			}
