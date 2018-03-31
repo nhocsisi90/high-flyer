@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.relic.highflyer.GameEngine;
-import com.relic.highflyer.screens.EndLevel;
 import com.relic.highflyer.screens.ScreenManager;
 import com.relic.highflyer.sounds.SoundPlayer;
 import com.relic.highflyer.sprites.Player;

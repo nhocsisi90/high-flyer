@@ -19,7 +19,6 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.relic.highflyer.GameEngine;
 import com.relic.highflyer.GameSettings;
 import com.relic.highflyer.GameState;
-import com.relic.highflyer.screens.EndLevel;
 import com.relic.highflyer.screens.Level2;
 import com.relic.highflyer.screens.ScreenManager;
 import com.relic.highflyer.sounds.SoundPlayer;
@@ -30,14 +29,12 @@ public class LandingDetectorTest {
 	private LandingDetector subject;
 	private SoundPlayer mockSoundPlayer;
 	private Player mockPlayer;
-	private EndLevel endLevel;
 	private ScreenManager mockScreenManager;
 	
 
 	@Before
 	public void setup() {
 		mockPlayer = Mockito.mock(Player.class);
-		endLevel = Mockito.mock(EndLevel.class);
 		mockScreenManager = Mockito.mock(ScreenManager.class);
 		Mockito.when(mockPlayer.getPlayerHeight()).thenReturn(80);
 		mockSoundPlayer = Mockito.mock(SoundPlayer.class);
