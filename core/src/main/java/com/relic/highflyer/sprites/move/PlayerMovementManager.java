@@ -6,6 +6,7 @@ import java.util.List;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.relic.highflyer.GameEngine;
 import com.relic.highflyer.screens.EndLevel;
+import com.relic.highflyer.screens.ScreenManager;
 import com.relic.highflyer.sounds.SoundPlayer;
 import com.relic.highflyer.sprites.Player;
 
@@ -15,12 +16,13 @@ public class PlayerMovementManager {
 
 	public PlayerMovementManager() {
 		SoundPlayer soundPlayer = new SoundPlayer();
-		EndLevel endlevl = new EndLevel();
 		
 		collisionDetectors.add(new BuildingCollisionDetector(soundPlayer));
 		collisionDetectors.add(new WindowCollisionDetector());
-		collisionDetectors.add(new LandingDetector(endlevl));
-		collisionDetectors.add(new PowerUpDetector());
+		collisionDetectors.add(new LandingDetector(soundPlayer, ScreenManager.INSTANCE));
+		//collisionDetectors.add(new PowerUpDetector(soundPlayer));
+		//collisionDetectors.add(new LandingDetector(endlevl));
+		collisionDetectors.add(new PowerUpDetector(soundPlayer));
 	}
 
 	public boolean tryMove(GameEngine game, List<Cell> nextCells, Player player, float nextX, float nextY) {
@@ -30,6 +32,7 @@ public class PlayerMovementManager {
 			if (hasCollision) {
 				return false;
 			}
+			
 		}
 		
 		if (canMove) {

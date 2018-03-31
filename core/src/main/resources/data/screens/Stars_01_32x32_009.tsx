@@ -3,7 +3,7 @@
  <image source="Stars_01_32x32_009.png" trans="00aa00" width="32" height="32"/>
  <tile id="0">
   <properties>
-   <property name="power" type="bool" value="true"/>
+   <property name="power" value="star"/>
   </properties>
  </tile>
 </tileset>

@@ -16,7 +16,7 @@ public class DesktopLauncher {
 		config.useGL30 = false;
 		config.height = settings.getWindowHeight();
 		config.width = settings.getWindowWidth();
-		new LwjglApplication(new GameEngine(settings, new GameState(), new ScreenManager()), config);
+		new LwjglApplication(new GameEngine(settings, new GameState(), ScreenManager.INSTANCE), config);
 	}
 
 	public enum AspectRatio {

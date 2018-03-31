@@ -6,19 +6,25 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.relic.highflyer.GameEngine;
+import com.relic.highflyer.sounds.SoundPlayer;
 import com.relic.highflyer.sprites.Player;
 
 public class PowerUpDetector implements CollisionDetector  {
+	
+	private SoundPlayer soundPlayer;
+	private String typePower="";
+	
+	public PowerUpDetector(SoundPlayer soundPlayer) {
+		this.soundPlayer = soundPlayer;
+	}
 	
 	@Override
 	public boolean detect(GameEngine game, List<Cell> nextCells, Player player, float nextX, float nextY) {
 		if (isPowerCell(nextCells, nextX, nextY)) {
 			
 			
-			
-			Sound shutdownSound = Gdx.audio.newSound(Gdx.files.internal("data/sounds/PowerUp.wav"));
-			shutdownSound.play();
-			game.getState().addPowerUp();
+			soundPlayer.playSound("data/sounds/PowerUp.wav");
+			game.getState().addPowerUp(typePower);
 			
 			return true;
 		}
@@ -29,6 +35,7 @@ public class PowerUpDetector implements CollisionDetector  {
 	private boolean isPowerCell(List<Cell> nextCells, float x, float y) {
 		for (Cell cell: nextCells) {
 			if (cell != null && cell.getTile() != null && cell.getTile().getProperties().containsKey("power")) {
+				typePower= cell.getTile().getProperties().get("power").toString();
 				cell.setTile(null);
 				return true;
 			}

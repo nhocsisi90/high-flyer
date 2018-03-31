@@ -2,30 +2,36 @@ package com.relic.highflyer.sprites.move;
 
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.relic.highflyer.GameEngine;
+import com.relic.highflyer.GameState;
 import com.relic.highflyer.screens.EndLevel;
-import com.relic.highflyer.screens.Level2;
+import com.relic.highflyer.screens.ScreenManager;
+import com.relic.highflyer.sounds.SoundPlayer;
 import com.relic.highflyer.sprites.Player;
 
 public class LandingDetector implements CollisionDetector {
 
-	private EndLevel endLevel= new EndLevel();
-	
-	public LandingDetector(EndLevel endLLevel) {
-		this.endLevel = endLLevel;
+	private ScreenManager screenManager;
+	private SoundPlayer soundPlayer;
+	public LandingDetector(SoundPlayer soundPlayers, ScreenManager screenManager) {
+		this.soundPlayer = soundPlayers;
+		this.screenManager = screenManager;
 	}
 	
 	@Override
 	public boolean detect(GameEngine game, List<Cell> nextCells, Player player, float nextX, float nextY) {
 		if (isLandingCell(nextCells, nextX, nextY)) {
-			endLevel.finishStage(game.getState());
-			Level2 lvl2 = new Level2(game);
+			finishStage(game.getState());
 			game.getState().setLvl(2);
-			game.setScreen(lvl2);
+			Screen screen = screenManager.getScreen(2);
+			game.setScreen(screen);
+			
 			player.setX(0);
 			player.setY((game.getSettings().getWindowHeight()/2) - (player.getPlayerHeight()/2));
-			
 			
 			return true;
 		}
@@ -42,5 +48,18 @@ public class LandingDetector implements CollisionDetector {
 		return false;
 		
 	}
+	private void finishStage(GameState state)
+	{
+       //play sound
+	   //add score
+	   //move to new level
+		//Sound finishSound = Gdx.audio.newSound(Gdx.files.internal("data/sounds/Finish.wav"));
+		soundPlayer.playSound("data/sounds/Finish.wav");
+		//finishSound.play();
+		
+		state.addLvlUp();	
+
+	}
+	
 
 }

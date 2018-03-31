@@ -158,7 +158,7 @@
  </tile>
  <tile id="1018">
   <properties>
-   <property name="power" type="bool" value="true"/>
+   <property name="landing" type="bool" value="true"/>
   </properties>
  </tile>
 </tileset>
